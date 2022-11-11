@@ -20,16 +20,16 @@ void emissivity(
   double ece=115.77*B13;                                // electron cyclotron energy (Eq. 1)
   double epe=0.0288*sqrt(dens*Z/A);                     // plasma frequency (Eq. 3)
   double eci=(fixedion ? 0 : 0.0635*(Z/A)*B13);         // ion cyclotron energy (Eq. 8)
-  double ecfx=epe*epe/ece;	                            // max energy of L wave 
+  double ecfx=epe*epe/ece;	                        // max energy of L wave 
   double ec=eci+ecfx;                                   // characteristic energy (Eq. 9) : max L-wave including ion cyclotron
-  double n0=sqrt(1+epe*epe/2/ece/eci);                  // index of refraction at eci (Eq. 10) after Eq. 19
-  double twon0overoneplusn0sqr=2*n0/(1+n0)/(1+n0);
+  double n0=sqrt(1+epe*epe/2/ece/eci);                  // index of refraction at eci (Eq. 10) after Eq. 19 (only used for fixedion=0)
+  double twon0overoneplusn0sqr=2*n0/(1+n0)/(1+n0);      // (only used for fixedion=0)
   double stb=sin(thetab);
   double ctb=cos(thetab);
   double fourthrootstb=sqrt(sqrt(stb));
   double p=0.1*(1+stb)/(1+B13);
   double a1factor=1/(1+0.6*B13*ctb*ctb);
-  double j1ectilde=0.5+0.05/(1+B13)+stb*0.25;			// Eq. 26
+  double j1ectilde=0.5+0.05/(1+B13)+stb*0.25;		// Eq. 26
   double j0=4/(sqrt(ec/eci)+1)/(sqrt(eci/ec)+1);        // after Eq. 16 
     
   for (int i=0;i<N;i++) {
@@ -39,7 +39,7 @@ void emissivity(
     double salpha, calpha;
     double epetilde,ecfxtilde,ectilde;
     double ephoton=ene[i];
-    double ypre1r,xpre1r,ypre2r,xpre2r;
+    double ypre1r,xpre1r;
     double emis1, emis2, emisXloc, emisOloc;
     double ja, jb, jeci;
     double a1;
@@ -146,8 +146,8 @@ void emissivity(
   ypre1r *=  ypre1r;
   xpre1r = stb*sphik/salphar;
   xpre1r *= xpre1r;
-  ypre2r = xpre1r;
-  xpre2r = ypre1r;
+#define  ypre2r  xpre1r
+#define  xpre2r  ypre1r
 
   emisXloc=xpre1r*emis2+xpre2r*emis1;
   emisOloc=ypre1r*emis2+ypre2r*emis1;
