@@ -1,0 +1,337 @@
+# run initiated by heyl at                       Fri Oct 22 17:15:51 2021
+# run initiated with command: ./atm -o _14.0969_7.08582_0 -B 14.0969 -T 7.08582 -b 0 -m 11 -p 1 -a 1.5 -M 2 -D 5 
+#
+# atm run-time parameters are
+# 
+#  -o  output file base name                    _14.0969_7.08582_0
+#  -i  input spectral file name                 <none>
+#  -s  seed solution base file name             <none>
+# 
+#  -g  log surface gravity of star              14.384800 cm/s^2
+#  -T  log effective atmospheric temperature    7.085820 K
+#      conserved net (astrophysical) flux       3.978170e+23 ergs/cm^2
+#  -B  log magnetic field strength              14.096900 G
+#  -b  magnetic field inclination cos(theta)    1.000000
+# 
+#  -X  hydrogen mass fraction                   1.000000
+#  -Y  helium mass fraction                     0.000000
+# 
+#  -a  log E_max (keV)                          1.500
+#  -n  coarse frequency mesh points             24
+#  -m  angle (LOS-normal) mesh points           11
+#  -p  azimuthal mesh points                    1
+#      (total of 11 trajectories used)
+#  -d  minimum (surface) mass index             -5.00
+#  -D  maximum (depth) mass index               5.00
+#      logarithmic mass depth intervals         0
+#      (using 10 intervals per decade)
+# 
+#
+# gravitational redshift Z table
+# surface gravity log(g_s) = 14.384800  (g_s=2.425493e+14 cm/s^2)
+#	Z		M (M_sol)	R (km)		log(gs)
+#
+#	0.143999	0.399414	5.000000	14.384800
+#	0.305648	1.399855	10.000000	14.384800
+#	0.483637	2.771814	15.000000	14.384800
+#	0.676110	4.361810	20.000000	14.384800
+#	0.446816	2.476008	14.000000	14.384800
+#
+#	0.133613	0.350000	4.659206	14.384800
+#	0.199509	0.700000	6.777916	14.384800
+#	0.255078	1.050000	8.491324	14.384800
+#	0.305668	1.400000	10.000596	14.384800
+#	0.353325	1.750000	11.383229	14.384800
+#	0.399083	2.100000	12.678763	14.384800
+#	0.443551	2.450000	13.910558	14.384800
+#	0.487119	2.800000	15.093754	14.384800
+#
+#	0.449823	2.500000	14.082279	14.384800
+#
+# machine information:
+# Linux se004 3.10.0-1160.45.1.el7.x86_64 #1 SMP Wed Oct 13 17:20:51 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
+#
+# pid 102769
+#
+#
+# run-time activity
+#
+LogmMeshEvenSpacedinLog     		 No
+TInterpExtendSurface        		Yes
+UseSurfaceTruncation        		 No
+UseFeaturelessMesh          		 No
+ProvideOpticalCoverage      		 No
+UseFixedLogEBounds          		Yes
+IgnoreVacuumParameter       		Yes
+IgnoreLongPolzComp          		 No
+UseProtonScattering         		 No
+UseScattering               		Yes
+UseBoundFree                		 No
+IgnoreCyclotronLines        		 No
+PureElectronPlasma          		 No
+UseGauntCorrections         		Yes
+UseGauntTDerivs             		Yes
+NegateModeCrossing          		 No
+FiniteSurfaceCorrection     		 No
+HermiteDifferencing         		 No
+PertFixUnphysicalDeltas     		 No
+PertFixLargeDeltas          		Yes
+PertFormalAfterLimitedT     		Yes
+ReportsOnCLEntry            		 No
+IncrementalReporting        		 No
+CheckContractionByFormal    		 No
+StartLucyUnsold             		 No
+SkipLargerOutputFiles       		Yes
+RejectUndefCLParms          		Yes
+UseAdaptiveMassMesh         		 No
+MagDiffusionLimit           		Yes
+UseCoulombCorrection        		Yes
+PermitOptRedist             		Yes
+UseGreyStructure            		 No
+# magnetic free-free gaunt factor tables computed in 1.14 sec
+# 
+# linearization operator size =    3075200 bytes/depth
+# linearization oper file req =  276768000 bytes
+#
+# allocations completed at                       Fri Oct 22 17:15:52 2021
+# plasma opacities computed in 0.66 sec
+# computing formal solution from trial structure atFri Oct 22 17:15:53 2021
+computing formal transfer solution
+processing 28 energies:
+  1	1.303847e-02 keV
+  2	2.524480e-02 keV
+  3	4.426077e-02 keV
+  4	6.573583e-02 keV
+  5	8.475180e-02 keV
+  6	9.695813e-02 keV
+  7	1.422735e-01 keV
+  8	3.009376e-01 keV
+  9	5.079500e-01 keV
+ 10	6.666141e-01 keV
+ 11	7.198284e-01 keV
+ 12	7.608775e-01 keV
+ 13	8.144352e-01 keV
+ 14	8.554843e-01 keV
+ 15	8.946438e-01 keV
+ 16	9.717472e-01 keV
+ 17	1.303847e+00 keV
+ 18	2.524480e+00 keV
+ 19	4.426077e+00 keV
+ 20	6.573583e+00 keV
+ 21	8.475180e+00 keV
+ 22	9.695813e+00 keV
+ 23	1.072977e+01 keV
+ 24	1.366237e+01 keV
+ 25	1.823102e+01 keV
+ 26	2.339047e+01 keV
+ 27	2.795911e+01 keV
+ 28	3.089172e+01 keV
+# entering cl's iterative loop at                Fri Oct 22 17:15:59 2021
+# pass 1 computed in 7.94 sec                    Fri Oct 22 17:16:08 2021
+# plasma opacities computed in 1.37 sec
+# pass 2 computed in 7.94 sec                    Fri Oct 22 17:16:19 2021
+# plasma opacities computed in 1.34 sec
+computing formal transfer solution
+processing 28 energies:
+  1	1.303847e-02 keV
+  2	2.524480e-02 keV
+  3	4.426077e-02 keV
+  4	6.573583e-02 keV
+  5	8.475180e-02 keV
+  6	9.695813e-02 keV
+  7	1.422735e-01 keV
+  8	3.009376e-01 keV
+  9	5.079500e-01 keV
+ 10	6.666141e-01 keV
+ 11	7.198284e-01 keV
+ 12	7.608775e-01 keV
+ 13	8.144352e-01 keV
+ 14	8.554843e-01 keV
+ 15	8.946438e-01 keV
+ 16	9.717472e-01 keV
+ 17	1.303847e+00 keV
+ 18	2.524480e+00 keV
+ 19	4.426077e+00 keV
+ 20	6.573583e+00 keV
+ 21	8.475180e+00 keV
+ 22	9.695813e+00 keV
+ 23	1.072977e+01 keV
+ 24	1.366237e+01 keV
+ 25	1.823102e+01 keV
+ 26	2.339047e+01 keV
+ 27	2.795911e+01 keV
+ 28	3.089172e+01 keV
+# pass 3 computed in 7.90 sec                    Fri Oct 22 17:16:34 2021
+# plasma opacities computed in 1.33 sec
+# pass 4 computed in 7.90 sec                    Fri Oct 22 17:16:45 2021
+# plasma opacities computed in 1.34 sec
+computing formal transfer solution
+processing 28 energies:
+  1	1.303847e-02 keV
+  2	2.524480e-02 keV
+  3	4.426077e-02 keV
+  4	6.573583e-02 keV
+  5	8.475180e-02 keV
+  6	9.695813e-02 keV
+  7	1.422735e-01 keV
+  8	3.009376e-01 keV
+  9	5.079500e-01 keV
+ 10	6.666141e-01 keV
+ 11	7.198284e-01 keV
+ 12	7.608775e-01 keV
+ 13	8.144352e-01 keV
+ 14	8.554843e-01 keV
+ 15	8.946438e-01 keV
+ 16	9.717472e-01 keV
+ 17	1.303847e+00 keV
+ 18	2.524480e+00 keV
+ 19	4.426077e+00 keV
+ 20	6.573583e+00 keV
+ 21	8.475180e+00 keV
+ 22	9.695813e+00 keV
+ 23	1.072977e+01 keV
+ 24	1.366237e+01 keV
+ 25	1.823102e+01 keV
+ 26	2.339047e+01 keV
+ 27	2.795911e+01 keV
+ 28	3.089172e+01 keV
+# pass 5 computed in 7.88 sec                    Fri Oct 22 17:17:00 2021
+# plasma opacities computed in 1.34 sec
+computing formal transfer solution
+processing 28 energies:
+  1	1.303847e-02 keV
+  2	2.524480e-02 keV
+  3	4.426077e-02 keV
+  4	6.573583e-02 keV
+  5	8.475180e-02 keV
+  6	9.695813e-02 keV
+  7	1.422735e-01 keV
+  8	3.009376e-01 keV
+  9	5.079500e-01 keV
+ 10	6.666141e-01 keV
+ 11	7.198284e-01 keV
+ 12	7.608775e-01 keV
+ 13	8.144352e-01 keV
+ 14	8.554843e-01 keV
+ 15	8.946438e-01 keV
+ 16	9.717472e-01 keV
+ 17	1.303847e+00 keV
+ 18	2.524480e+00 keV
+ 19	4.426077e+00 keV
+ 20	6.573583e+00 keV
+ 21	8.475180e+00 keV
+ 22	9.695813e+00 keV
+ 23	1.072977e+01 keV
+ 24	1.366237e+01 keV
+ 25	1.823102e+01 keV
+ 26	2.339047e+01 keV
+ 27	2.795911e+01 keV
+ 28	3.089172e+01 keV
+# pass 6 computed in 7.90 sec                    Fri Oct 22 17:17:16 2021
+# plasma opacities computed in 1.34 sec
+computing formal transfer solution
+processing 28 energies:
+  1	1.303847e-02 keV
+  2	2.524480e-02 keV
+  3	4.426077e-02 keV
+  4	6.573583e-02 keV
+  5	8.475180e-02 keV
+  6	9.695813e-02 keV
+  7	1.422735e-01 keV
+  8	3.009376e-01 keV
+  9	5.079500e-01 keV
+ 10	6.666141e-01 keV
+ 11	7.198284e-01 keV
+ 12	7.608775e-01 keV
+ 13	8.144352e-01 keV
+ 14	8.554843e-01 keV
+ 15	8.946438e-01 keV
+ 16	9.717472e-01 keV
+ 17	1.303847e+00 keV
+ 18	2.524480e+00 keV
+ 19	4.426077e+00 keV
+ 20	6.573583e+00 keV
+ 21	8.475180e+00 keV
+ 22	9.695813e+00 keV
+ 23	1.072977e+01 keV
+ 24	1.366237e+01 keV
+ 25	1.823102e+01 keV
+ 26	2.339047e+01 keV
+ 27	2.795911e+01 keV
+ 28	3.089172e+01 keV
+# pass 7 computed in 7.86 sec                    Fri Oct 22 17:17:31 2021
+# plasma opacities computed in 1.34 sec
+computing formal transfer solution
+processing 28 energies:
+  1	1.303847e-02 keV
+  2	2.524480e-02 keV
+  3	4.426077e-02 keV
+  4	6.573583e-02 keV
+  5	8.475180e-02 keV
+  6	9.695813e-02 keV
+  7	1.422735e-01 keV
+  8	3.009376e-01 keV
+  9	5.079500e-01 keV
+ 10	6.666141e-01 keV
+ 11	7.198284e-01 keV
+ 12	7.608775e-01 keV
+ 13	8.144352e-01 keV
+ 14	8.554843e-01 keV
+ 15	8.946438e-01 keV
+ 16	9.717472e-01 keV
+ 17	1.303847e+00 keV
+ 18	2.524480e+00 keV
+ 19	4.426077e+00 keV
+ 20	6.573583e+00 keV
+ 21	8.475180e+00 keV
+ 22	9.695813e+00 keV
+ 23	1.072977e+01 keV
+ 24	1.366237e+01 keV
+ 25	1.823102e+01 keV
+ 26	2.339047e+01 keV
+ 27	2.795911e+01 keV
+ 28	3.089172e+01 keV
+# pass 8 computed in 7.82 sec                    Fri Oct 22 17:17:47 2021
+# plasma opacities computed in 1.33 sec
+computing formal transfer solution
+processing 28 energies:
+  1	1.303847e-02 keV
+  2	2.524480e-02 keV
+  3	4.426077e-02 keV
+  4	6.573583e-02 keV
+  5	8.475180e-02 keV
+  6	9.695813e-02 keV
+  7	1.422735e-01 keV
+  8	3.009376e-01 keV
+  9	5.079500e-01 keV
+ 10	6.666141e-01 keV
+ 11	7.198284e-01 keV
+ 12	7.608775e-01 keV
+ 13	8.144352e-01 keV
+ 14	8.554843e-01 keV
+ 15	8.946438e-01 keV
+ 16	9.717472e-01 keV
+ 17	1.303847e+00 keV
+ 18	2.524480e+00 keV
+ 19	4.426077e+00 keV
+ 20	6.573583e+00 keV
+ 21	8.475180e+00 keV
+ 22	9.695813e+00 keV
+ 23	1.072977e+01 keV
+ 24	1.366237e+01 keV
+ 25	1.823102e+01 keV
+ 26	2.339047e+01 keV
+ 27	2.795911e+01 keV
+ 28	3.089172e+01 keV
+# pass 9 computed in 7.91 sec                    Fri Oct 22 17:18:03 2021
+# plasma opacities computed in 1.35 sec
+# pass 10 computed in 7.88 sec                   Fri Oct 22 17:18:13 2021
+# plasma opacities computed in 1.34 sec
+# pass 11 computed in 7.83 sec                   Fri Oct 22 17:18:23 2021
+# plasma opacities computed in 1.33 sec
+# pass 12 computed in 7.91 sec                   Fri Oct 22 17:18:34 2021
+# plasma opacities computed in 1.33 sec
+# computing optical depth table at               Fri Oct 22 17:18:36 2021
+# optical depth table computed in 0.00 sec       Fri Oct 22 17:18:36 2021
+# run completed at                               Fri Oct 22 17:18:37 2021
+# elapsed time is 2.77 min

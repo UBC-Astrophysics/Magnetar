@@ -1,0 +1,182 @@
+reading .atmrc
+./atm executed in /scratch/st-heyl-1/heyl/atm-runs/run_hotspot
+./atm -o _14.0969_7.08582_0 -B 14.0969 -T 7.08582 -b 0 -m 11 -p 1 -a 1.5 -M 2 -D 5 
+run-time parameters and timings to _14.0969_7.08582_0.log
+see _14.0969_7.08582_0.bug for detailed run-time reporting
+==
+runtime flags all have default values
+--
+generating solution mesh
+log(E) range [-2.00, 1.50] (keV)
+using 28 pt photon energy grid
+log(m) range [-5.00, 5.00]
+using 91 depth mesh points
+using 11 pt logarithmic Gauss-Legendre (-4.00, 0.00) normal excluded mu table
+initializing the magnetic gaunt factor interpolation tables
+
+reduced system dimensions:
+HE_row = 0
+RE_row = 1
+NC_row = 2
+CC_row = 3
+SE_row = 4
+OP_row = 4
+RT_row = 4
+
+dN_col = 0
+dT_col = 1
+dn_col = 2
+dw_col = 4
+du_col = 4
+
+plasma constituents      =       2
+occupation probabilities =       0
+polarization modes       =       2
+frequency mesh points    =      28
+trajectory mesh points   =      11
+angle-frequency pairs    =     308
+depth mesh points        =      91
+model vars per depth     =     620
+model vars per freq      =    2002
+total model variables    =   56420
+
+linearization operator size =    3075200 bytes/depth
+linearization oper file req =  276768000 bytes
+
+--
+no additional abundance equations
+no additional rate equations
+--
+computing initial atmospheric properties
+work files are ._14.0969_7.08582_0102769_*
+--
+computing formal transfer solution
+formal solution computed in 2.33 sec
+--
+computing pass 1 corrections
+forward sweep computed in 7.81 sec
+backward sweep computed in 0.13 sec
+pass 1 corrections found in 7.94 sec
+log(max_err) = 0.455217 
+largest log(dT/T) = -0.448376 at depth 64 (35.61 %)
+largest log(dF) = 5.972583 at depth 89 
+--
+computing pass 2 corrections
+forward sweep computed in 7.81 sec
+backward sweep computed in 0.13 sec
+pass 2 corrections found in 7.94 sec
+log(max_err) = 3.503153 
+largest log(dT/T) = -0.154902 at depth 68 (70.00 %)
+limited T correction at one or more depths
+computing formal transfer solution
+formal solution computed in 2.38 sec
+largest log(dF) = 0.707230 at depth 79 
+--
+computing pass 3 corrections
+forward sweep computed in 7.77 sec
+backward sweep computed in 0.13 sec
+pass 3 corrections found in 7.90 sec
+log(max_err) = 0.580687 
+largest log(dT/T) = -0.397453 at depth 12 (40.04 %)
+largest log(dF) = 5.265363 at depth 89 
+--
+computing pass 4 corrections
+forward sweep computed in 7.76 sec
+backward sweep computed in 0.14 sec
+pass 4 corrections found in 7.90 sec
+log(max_err) = 4.075861 
+largest log(dT/T) = -0.154902 at depth 1 (70.00 %)
+limited T correction at one or more depths
+computing formal transfer solution
+formal solution computed in 2.40 sec
+largest log(dF) = -0.581155 at depth 79 (26.23 %)
+--
+computing pass 5 corrections
+forward sweep computed in 7.75 sec
+backward sweep computed in 0.13 sec
+pass 5 corrections found in 7.88 sec
+log(max_err) = 1.127981 
+largest log(dT/T) = -0.154902 at depth 57 (70.00 %)
+limited T correction at one or more depths
+computing formal transfer solution
+formal solution computed in 2.42 sec
+largest log(dF) = -1.213274 at depth 80 ( 6.12 %)
+--
+computing pass 6 corrections
+forward sweep computed in 7.77 sec
+backward sweep computed in 0.13 sec
+pass 6 corrections found in 7.90 sec
+log(max_err) = 1.322487 
+largest log(dT/T) = -0.154902 at depth 55 (70.00 %)
+limited T correction at one or more depths
+computing formal transfer solution
+formal solution computed in 2.42 sec
+largest log(dF) = -1.471007 at depth 81 ( 3.38 %)
+--
+computing pass 7 corrections
+forward sweep computed in 7.73 sec
+backward sweep computed in 0.13 sec
+pass 7 corrections found in 7.86 sec
+log(max_err) = 1.379991 
+largest log(dT/T) = -0.154902 at depth 55 (70.00 %)
+limited T correction at one or more depths
+computing formal transfer solution
+formal solution computed in 2.42 sec
+largest log(dF) = -1.500641 at depth 80 ( 3.16 %)
+--
+computing pass 8 corrections
+forward sweep computed in 7.68 sec
+backward sweep computed in 0.14 sec
+pass 8 corrections found in 7.82 sec
+log(max_err) = 0.919592 
+largest log(dT/T) = -0.154902 at depth 55 (70.00 %)
+limited T correction at one or more depths
+computing formal transfer solution
+formal solution computed in 2.43 sec
+largest log(dF) = -1.502501 at depth 80 ( 3.14 %)
+--
+computing pass 9 corrections
+forward sweep computed in 7.78 sec
+backward sweep computed in 0.13 sec
+pass 9 corrections found in 7.91 sec
+log(max_err) = 0.350081 
+largest log(dT/T) = -0.995268 at depth 0 (10.11 %)
+largest log(dF) = 0.648107 at depth 71 
+--
+computing pass 10 corrections
+forward sweep computed in 7.75 sec
+backward sweep computed in 0.13 sec
+pass 10 corrections found in 7.88 sec
+log(max_err) = -0.699089 (19.99 %)
+largest log(dT/T) = -2.056731 at depth 55 ( 0.88 %)
+largest log(dF) = -0.173120 at depth 89 (67.12 %)
+--
+computing pass 11 corrections
+forward sweep computed in 7.70 sec
+backward sweep computed in 0.13 sec
+pass 11 corrections found in 7.83 sec
+log(max_err) = -1.487944 ( 3.25 %)
+largest log(dT/T) = -3.875443 at depth 56 ( 0.01 %)
+largest log(dF) = -2.569492 at depth 89 ( 0.27 %)
+--
+computing pass 12 corrections
+forward sweep computed in 7.78 sec
+backward sweep computed in 0.13 sec
+ %PGPLOT, Unable to read font file: grfont.dat
+ %PGPLOT, Use environment variable PGPLOT_FONT to specify the location of the PGPLOT grfont.dat file.
+pass 12 corrections found in 7.91 sec
+log(max_err) = -1.971193 ( 1.07 %)
+largest log(dT/T) = -4.740926 at depth 64 
+largest log(dF) = -4.932065 at depth 89 
+--
+computing optical depth table
+generating FITS model
+12/15 passes achieved (log) tolerance of -3.000000
+==
+see _14.0969_7.08582_0.* for model results
+./atm -o _14.0969_7.08582_0 -B 14.0969 -T 7.08582 -b 0 -m 11 -p 1 -a 1.5 -M 2 -D 5 complete.
+
+user	 2:10.69
+sys 	    13.02
+
+elapsed time is 143.69 sec
