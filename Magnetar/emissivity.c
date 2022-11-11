@@ -17,21 +17,20 @@ void emissivity(
   // quantities that are independent of the photon angles and energy (ene)
   
   double B13=mag_strength/1e13;
-  double ece=115.77*B13;               // electron cyclotron energy (Eq. 1)
-  double epe=0.0288*sqrt(dens*Z/A);    // plasma frequency (Eq. 3)
-  double eci=0.0635*(Z/A)*B13;         // ion cyclotron energy (Eq. 8)
-  double ecfx=epe*epe/ece;	       // max energy of L wave 
-  double ec=eci+ecfx;                  // characteristic energy (Eq. 9) : max L-wave including ion cyclotron
-  double n0=sqrt(1+epe*epe/2/ece/eci); // index of refraction at eci (Eq. 10) after Eq. 19
+  double ece=115.77*B13;                                // electron cyclotron energy (Eq. 1)
+  double epe=0.0288*sqrt(dens*Z/A);                     // plasma frequency (Eq. 3)
+  double eci=(fixedion ? 0 : 0.0635*(Z/A)*B13);         // ion cyclotron energy (Eq. 8)
+  double ecfx=epe*epe/ece;	                            // max energy of L wave 
+  double ec=eci+ecfx;                                   // characteristic energy (Eq. 9) : max L-wave including ion cyclotron
+  double n0=sqrt(1+epe*epe/2/ece/eci);                  // index of refraction at eci (Eq. 10) after Eq. 19
   double twon0overoneplusn0sqr=2*n0/(1+n0)/(1+n0);
   double stb=sin(thetab);
   double ctb=cos(thetab);
   double fourthrootstb=sqrt(sqrt(stb));
   double p=0.1*(1+stb)/(1+B13);
   double a1factor=1/(1+0.6*B13*ctb*ctb);
-  double j1ectilde=0.5+0.05/(1+B13)+stb*0.25;			  // Eq. 26
-  double j0=4/(sqrt(ec/eci)+1)/(sqrt(eci/ec)+1);                  // after Eq. 16 
-
+  double j1ectilde=0.5+0.05/(1+B13)+stb*0.25;			// Eq. 26
+  double j0=4/(sqrt(ec/eci)+1)/(sqrt(eci/ec)+1);        // after Eq. 16 
     
   for (int i=0;i<N;i++) {
     double stk, ctk, sphik, cphik;
@@ -102,6 +101,7 @@ void emissivity(
     }
     jectilde=0.5+0.05/(1+B13)*(1+ctb*sphik)-0.15*(1-ctb)*salpha;   // Eq. 18
     eratio=ephoton/ectilde;
+      
     if (fixedion) {
       jb=jectilde/(1-p+p*pow(eratio,-0.6));             // Eq. 22
     } else { 
@@ -113,25 +113,28 @@ void emissivity(
       emis1=(1-a1*a1factor)*ja;                                              // Eq. 25
       emis2=2*ja-emis1;
     } else {
-      double eL=(epe*(1+1.2*(1-ctk)*sqrt(1-ctk))*(1-0.3333333333*stb*stb));
+      double eL=epe*(1+1.2*(1-ctk)*sqrt(1-ctk))*(1-0.3333333333*stb*stb);
       double wL=0.8*pow(ectilde/epe,0.2)*sqrt(sin(alpha*0.5))*(1+stb*stb);
       double bigX=(ephoton-eL)/(2*epe*wL*(1-ctk));
       double dd=ephoton/epe;
       double l=(0.17*epe/(ec*(1+bigX*bigX*bigX*bigX))+0.21*exp(-dd*dd))*stk*stk*wL;    
-      double rl=fourthrootstb*(2-salpha*salpha*salpha*salpha)*(l/(1+l));
-		   
-      double ntilde=1-epetilde*epetilde/(ece*(ephoton-eci));
-      double jc=1+ntilde;
-      double jb1;
-
-      jc=4*ntilde/jc/jc;
+      double rl=fourthrootstb*(2-salpha*salpha*salpha*salpha)*(l/(1+l));		         
+      double jc, jb1;
+  
+      if (ephoton>ectilde) {
+          double ntilde=1-epetilde*epetilde/(ece*(ephoton-eci));        // Eq. 13
+          jc=1+ntilde;
+          jc=4*ntilde/jc/jc;
+      } else {
+          jc=0;
+      }
 	
       if (fixedion) {
-	jb1=j1ectilde/(0.1+0.9*pow(eratio,-0.4));                      // Eq. 27		
+        jb1=j1ectilde/(0.1+0.9*pow(eratio,-0.4));                      // Eq. 27		
       } else {
-	double j1eci;
-	j1eci=(1-a1)*jeci;                                              // Eq. 26   
-	jb1=pow(eratio,log(j1ectilde/j1eci)/logectildeoeci)*j1ectilde;  // Eq. 26
+        double j1eci;
+        j1eci=(1-a1)*jeci;                                              // Eq. 26   
+        jb1=pow(eratio,log(j1ectilde/j1eci)/logectildeoeci)*j1ectilde;  // Eq. 26
       }
 
       emis1=jb1*(1-jc)+jc*(1-rl);
@@ -153,3 +156,4 @@ void emissivity(
        
   }
 }
+
