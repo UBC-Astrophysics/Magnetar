@@ -55,7 +55,7 @@ void emissivity(
 //    sincos(phik[i],&sphik,&cphik);
 
     ctk=(ctk<0 ? 0 : (ctk>0.999 ? 0.999 : ctk));
-    stk=(stk<0.01414178207 ? 0.01414178207 : (stk>1 ? 1 : stk));
+    stk=(stk<0.04471017781 ? 0.04471017781 : (stk>1 ? 1 : stk));
 
     dum=ctb*ctk;
     calphai=(stb*stk*cphik);
