@@ -3,7 +3,14 @@ from numpy import sin, cos, arccos, radians, exp, expm1, log, sqrt, minimum, max
 from Magnetar.utils import atmosphere
 from scipy.integrate import simps
 from Magnetar.simple_atmospheres import bbfunk
-        
+
+import ctypes
+_sum = ctypes.CDLL('emissivity.so')
+_sum.emissivity.argtypes = (ctypes.POINTER(ctypes.c_double), ctypes.POINTER(ctypes.c_double), ctypes.POINTER(ctypes.c_double), ctypes.c_int,
+                            ctypes.c_double,ctypes.c_double, ctypes.c_double,ctypes.c_double, ctypes.c_double,ctypes.c_int,
+                            ctypes.POINTER(ctypes.c_double), ctypes.POINTER(ctypes.c_double))
+_sum.emissivity.restype = ctypes.c_void
+
 class condensed_surface(atmosphere):
     def __init__(self,effective_temperature,mag_strength,mag_inclination,density,fixed_ions=True):
         self.effective_temperature=effective_temperature
