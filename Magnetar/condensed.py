@@ -36,7 +36,7 @@ class condensed_surface(atmosphere):
     #
     
 
-    def _emissivity_xo_new(dataarray,mag_strength,mag_inclination,dens,fixed_ions,Z,A):
+    def _emissivity_xo(dataarray,mag_strength,mag_inclination,dens,fixed_ions,Z,A):
         thetak=radians(dataarray[-3])
         phik=radians(dataarray[-2])
         ene=dataarray[-1]
