@@ -144,12 +144,20 @@ void emissivity(
   
   // transformations from mode 1 and 2 to X and O (Eq. B.9 - B.12)	  
   if (mixing) {    
-      ypre1r = (ctb*stk-stb*ctk*cphik)/salphar;
+      double sum;
+      // ypre1r = (ctb*stk-stb*ctk*cphik)/salphar;
+      ypre1r = (ctb*stk-stb*ctk*cphik); // removed salphar because we are normalizing
       ypre1r *=  ypre1r;
+      // xpre1r = stb*sphik/salphar;
+      xpre1r = stb*sphik; // removed salphar because we are normalizing
+      xpre1r *= xpre1r;    
+      sum=xpre1r+ypre1r;
+      xpre1r/=sum;
+      ypre1r/=sum;
   } else {
      ypre1r=1;    
+     xpre1r=0; 
   }
-  xpre1r = 1-ypre1r;
       
 #define  ypre2r  xpre1r
 #define  xpre2r  ypre1r
