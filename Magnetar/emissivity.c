@@ -11,7 +11,7 @@ void emissivity(
 		    double Z,
 		    double A,
 		    int fixedion,
-            int mixing,
+		    int mixing,
 		    double *emisX,
 		    double *emisO)  {
 	
