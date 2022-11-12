@@ -11,6 +11,7 @@ void emissivity(
 		    double Z,
 		    double A,
 		    int fixedion,
+            int mixing,
 		    double *emisX,
 		    double *emisO)  {
 	
@@ -20,16 +21,16 @@ void emissivity(
   double ece=115.77*B13;                                // electron cyclotron energy (Eq. 1)
   double epe=0.0288*sqrt(dens*Z/A);                     // plasma frequency (Eq. 3)
   double eci=(fixedion ? 0 : 0.0635*(Z/A)*B13);         // ion cyclotron energy (Eq. 8)
-  double ecfx=epe*epe/ece;	                        // max energy of L wave 
+  double ecfx=epe*epe/ece;	                            // max energy of L wave 
   double ec=eci+ecfx;                                   // characteristic energy (Eq. 9) : max L-wave including ion cyclotron
-  double n0=sqrt(1+epe*epe/2/ece/eci);                  // index of refraction at eci (Eq. 10) after Eq. 19 (only used for fixedion=0)
-  double twon0overoneplusn0sqr=2*n0/(1+n0)/(1+n0);      // (only used for fixedion=0)
+  double n0=sqrt(1+epe*epe/2/ece/eci);                  // index of refraction at eci (Eq. 10) after Eq. 19
+  double twon0overoneplusn0sqr=2*n0/(1+n0)/(1+n0);
   double stb=sin(thetab);
   double ctb=cos(thetab);
   double fourthrootstb=sqrt(sqrt(stb));
   double p=0.1*(1+stb)/(1+B13);
   double a1factor=1/(1+0.6*B13*ctb*ctb);
-  double j1ectilde=0.5+0.05/(1+B13)+stb*0.25;		// Eq. 26
+  double j1ectilde=0.5+0.05/(1+B13)+stb*0.25;			// Eq. 26
   double j0=4/(sqrt(ec/eci)+1)/(sqrt(eci/ec)+1);        // after Eq. 16 
     
   for (int i=0;i<N;i++) {
@@ -94,18 +95,18 @@ void emissivity(
       Rplus*=Rplus;
       Rminus=(nminus-1)/(nminus+1);
       Rminus*=Rminus;
-#define AE ((1-ctb)/2/sqrt(1+B13)+stk*stk*stk*stk*(0.7-0.45/j0)*(1-calpha)) // Eq. 16
+#define AE ((1-ctb)/(2*sqrt(1+B13))+stk*stk*stk*stk*(0.7-0.45/j0)*(1-calpha)) // Eq. 16
       ja=(1-AE)*(1-0.5*(Rminus+Rplus));                            // Eq. 15
     } else {
       ja=0;
     }
-    jectilde=0.5+0.05/(1+B13)*(1+ctb*sphik)-0.15*(1-ctb)*salpha;   // Eq. 18
+    jectilde=0.5+0.05/(1+B13)*(1+ctb*stk)-0.15*(1-ctb)*salpha;   // Eq. 18
     eratio=ephoton/ectilde;
       
     if (fixedion) {
       jb=jectilde/(1-p+p*pow(eratio,-0.6));             // Eq. 22
     } else { 
-      jeci=twon0overoneplusn0sqr*(1+(ctb-cphik)/(2*(1+B13)));		       // Eq. 19
+      jeci=twon0overoneplusn0sqr*(1+(ctb-ctk)/(2*(1+B13)));		       // Eq. 19
       jb=pow(eratio,log(jectilde/jeci)/logectildeoeci)*jectilde;  // Eq. 17
     } 
     
@@ -142,10 +143,14 @@ void emissivity(
     }
   
   // transformations from mode 1 and 2 to X and O (Eq. B.9 - B.12)	  
-  ypre1r = (ctb*stk-stb*ctk*cphik)/salphar;
-  ypre1r *=  ypre1r;
-  xpre1r = stb*sphik/salphar;
-  xpre1r *= xpre1r;
+  if (mixing) {    
+      ypre1r = (ctb*stk-stb*ctk*cphik)/salphar;
+      ypre1r *=  ypre1r;
+  } else {
+     ypre1r=1;    
+  }
+  xpre1r = 1-ypre1r;
+      
 #define  ypre2r  xpre1r
 #define  xpre2r  ypre1r
 
