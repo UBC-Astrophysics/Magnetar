@@ -4,13 +4,14 @@ from Magnetar.utils import atmosphere
 from scipy.integrate import simps
 from Magnetar.simple_atmospheres import bbfunk
 
+
 import ctypes
 _sum = ctypes.CDLL('Magnetar/emissivity.so')
 _sum.emissivity.argtypes = (ctypes.POINTER(ctypes.c_double), ctypes.POINTER(ctypes.c_double), ctypes.POINTER(ctypes.c_double), ctypes.c_int,
-                            ctypes.c_double,ctypes.c_double, ctypes.c_double,ctypes.c_double, ctypes.c_double,ctypes.c_int,
+                            ctypes.c_double,ctypes.c_double, ctypes.c_double,ctypes.c_double, ctypes.c_double,ctypes.c_int, ctypes.c_int,
                             ctypes.POINTER(ctypes.c_double), ctypes.POINTER(ctypes.c_double))
 _sum.emissivity.restype = None
-
+ 
 class condensed_surface(atmosphere):
     def __init__(self,effective_temperature,mag_strength,mag_inclination,density,fixed_ions=True):
         self.effective_temperature=effective_temperature
@@ -43,7 +44,7 @@ class condensed_surface(atmosphere):
     #
     
 
-    def _emissivity_xo(dataarray,mag_strength,mag_inclination,dens,fixed_ions,Z,A):
+    def _emissivity_xo(dataarray,mag_strength,mag_inclination,dens,fixed_ions,Z,A,mixing=True):
         thetak=radians(dataarray[-3])
         phik=radians(dataarray[-2])
         ene=dataarray[-1]
@@ -51,16 +52,11 @@ class condensed_surface(atmosphere):
         array_type=ctypes.c_double * lx
         eXout=array_type(*zeros(lx))
         eOout=array_type(*zeros(lx))
-        if fixed_ions:
-            fion=1
-        else:
-            fion=0
-            
+             
         _sum.emissivity(array_type(*thetak),array_type(*phik),array_type(*ene),ctypes.c_int(lx),
                                   ctypes.c_double(mag_strength),ctypes.c_double(radians(mag_inclination)),ctypes.c_double(dens),
-                                  ctypes.c_double(Z),ctypes.c_double(A),ctypes.c_int(fion),eXout,eOout)
+                                  ctypes.c_double(Z),ctypes.c_double(A),ctypes.c_int(1 if fixed_ions else 0),ctypes.c_int(1 if mixing else 0),eXout,eOout)
         return array(eXout),array(eOout)
-
 
 
     def emissivity_xo(self,dataarray):
