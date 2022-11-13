@@ -11,3 +11,6 @@ with
   import jnumba
   
 to force the code to fall back regular python
+
+Some key routines are written in C, so go to the Magnetar directory and type make to compile these.  This should work fine on
+Mac and Linux systems, but Windows users will have to make some alterations to the python loading routines and the Makefile.
