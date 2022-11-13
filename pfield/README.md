@@ -1,4 +1,4 @@
-# QEDSurface
+# PField
 
 pfield will calculate the outgoing intensity in Stokes's Q using
 projection of the star's the magnetic moment into the plane of
