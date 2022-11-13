@@ -123,7 +123,7 @@ void emissivity(
       double jc, jb1;
   
       if (ephoton>ectilde) {
-          double ntilde=1-epetilde*epetilde/(ece*(ephoton-eci));        // Eq. 13
+          double ntilde=sqrt(1-epetilde*epetilde/(ece*(ephoton-eci)));        // Eq. 13
           jc=1+ntilde;
           jc=4*ntilde/jc/jc;
       } else {
