@@ -11,7 +11,7 @@ void emissivity(
 		    double Z,
 		    double A,
 		    int fixedion,
-		    int mixing,
+            int mixing,
 		    double *emisX,
 		    double *emisO)  {
 	
@@ -85,7 +85,7 @@ void emissivity(
       calpha=calphar;
     }
 	
-    a1=(1-ctb*ctb*cphik-stb*stb*calpha);                           // Eq. 25
+    a1=(1-ctb*ctb*ctk-stb*stb*calpha);                           // Eq. 25
 	  
     if (ephoton<eci) {
       double nplus,nminus,Rplus,Rminus;
