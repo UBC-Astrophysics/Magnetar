@@ -114,12 +114,12 @@ void emissivity(
       emis1=(1-a1*a1factor)*ja;                                              // Eq. 25
       emis2=2*ja-emis1;
     } else {
-      double eL=epe*(1+1.2*(1-ctk)*sqrt(1-ctk))*(1-0.3333333333*stb*stb);
+      double eL=epe*(1+1.2*(1-ctk)*sqrt(1-ctk))*(1-0.3333333333*stb*stb);   // Eq. 21ff
       double wL=0.8*pow(ectilde/epe,0.2)*sqrt(sin(alpha*0.5))*(1+stb*stb);
       double bigX=(ephoton-eL)/(2*epe*wL*(1-ctk));
       double dd=ephoton/epe;
       double l=(0.17*epe/(ec*(1+bigX*bigX*bigX*bigX))+0.21*exp(-dd*dd))*stk*stk*wL;    
-      double rl=fourthrootstb*(2-salpha*salpha*salpha*salpha)*(l/(1+l));		         
+      double rl=fourthrootstb*(2-salpha*salpha*salpha*salpha)*(l/(1+l));	// Eq. 24	         
       double jc, jb1;
   
       if (ephoton>ectilde) {
@@ -138,8 +138,8 @@ void emissivity(
         jb1=pow(eratio,log(j1ectilde/j1eci)/logectildeoeci)*j1ectilde;  // Eq. 26
       }
 
-      emis1=jb1*(1-jc)+jc*(1-rl);
-      emis2=2*(jb*(1-jc)+jc/(1+l))-emis1;
+      emis1=jb1*(1-jc)+jc*(1-rl);					// Eq. 23
+      emis2=2*(jb*(1-jc)+jc/(1+l))-emis1;				// Eq. 11
     }
   
   // transformations from mode 1 and 2 to X and O (Eq. B.9 - B.12)	  
