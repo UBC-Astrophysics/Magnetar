@@ -38,8 +38,7 @@ def plottwo(x,y,yerr=None,fmt=None):
         _yerr=np.concatenate((yerr,yerr))
         plt.errorbar(_x,_y,xerr=(_x[1]-_x[0])/2,yerr=_yerr,fmt=fmt)
 
-
-        def stefan_boltzmann_law(effective_temperature):
+def stefan_boltzmann_law(effective_temperature):
     return 208452.792*np.pi**5/15*effective_temperature**4
 
 class atmosphere:
