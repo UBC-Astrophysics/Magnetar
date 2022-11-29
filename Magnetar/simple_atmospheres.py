@@ -15,6 +15,8 @@ import numpy as np
 def bbfunk( ee, tt):  # per mode
     return 208452.792 * ee**3 / np.expm1(ee / tt) / 2
 
+bbfunk_total=(lambda e,t : 208452.792 * e**3 / np.expm1(e/t))
+
 
 def bb_atmo_f(temp):
     return atmosphere() * (lambda ee: bbfunk(ee,temp))
