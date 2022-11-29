@@ -25,6 +25,7 @@ def loadpfield_array(file):
     qoveriarray=np.array(qoveriarray)[iphi]    
     return np.vstack((phiarray,earray,iarray,qoveriarray))
 
+import matplotlib.pyplot as plt
 def plottwo(x,y,yerr=None,fmt=None):
     _x=np.concatenate((x,x+1))
     _y=np.concatenate((y,y))
