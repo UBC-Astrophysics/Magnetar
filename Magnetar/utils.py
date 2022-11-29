@@ -2,7 +2,43 @@
 import numpy as np
 from scipy.integrate import simps
 
-def stefan_boltzmann_law(effective_temperature):
+def loadpfield_array(file):
+    phiarray=[]
+    earray=[]
+    iarray=[]
+    qoveriarray=[]
+    readon=True
+    with open(file) as f:
+        for line in f:
+            if line[0]=="!":
+                readon=not readon
+            elif line[0]!="#" and len(line)>5 and readon:
+                aa=line.split()
+                phiarray.append(float(aa[0]))
+                earray.append(float(aa[1]))
+                iarray.append(float(aa[2]))
+                qoveriarray.append(float(aa[3]))
+    iphi=np.argsort(phiarray,kind='stable')
+    phiarray=np.array(phiarray)[iphi]
+    earray=np.array(earray)[iphi]
+    iarray=np.array(iarray)[iphi]
+    qoveriarray=np.array(qoveriarray)[iphi]    
+    return np.vstack((phiarray,earray,iarray,qoveriarray))
+
+def plottwo(x,y,yerr=None,fmt=None):
+    _x=np.concatenate((x,x+1))
+    _y=np.concatenate((y,y))
+    if yerr is None:
+        if fmt is None:
+            plt.plot(_x,_y)
+        else:
+            plt.plot(_x,_y,fmt)
+    else:
+        _yerr=np.concatenate((yerr,yerr))
+        plt.errorbar(_x,_y,xerr=(_x[1]-_x[0])/2,yerr=_yerr,fmt=fmt)
+
+
+        def stefan_boltzmann_law(effective_temperature):
     return 208452.792*np.pi**5/15*effective_temperature**4
 
 class atmosphere:
