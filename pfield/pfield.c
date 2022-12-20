@@ -147,9 +147,12 @@ _alpha_  angle of magnetic moment with line of sight in degrees\n\n\
 #  Column 13 - initial intensity in X mode\n\
 #  Column 14 - initial intensity in O mode\n\
 #  Column 15 - final intensity in Q [relative to projected magnetic moment]\n\
-#  Column 16 - Integral of Omega ds -- depolarization bandwidth is Energy of Photon/(column 16)\n#\n");
-   printf("#   b        beta      s1       s2      s3       mago        o1        o2      o3    mag_colat  theta    phi       X         O            Q         IOmdL\n");
-
+#  Column 16 - Integral of Omega ds -- depolarization bandwidth is Energy of Photon/(column 16)\n\
+#  Column 17 - Delta nu - change in true anomaly along the path [degrees]\n\
+#  Column 18 - Magnetic Longitude with subobserver point at zero longitude increasing anti-clockwise\n\
+#\n");
+   
+  printf("#   b        beta      s1       s2      s3       mago        o1        o2      o3    mag_colat  theta    phi       X         O            Q         IOmdL     Delta_nu      Long\n");
 
   nstep=1; /* number of initial steps per quadrant */
 
@@ -165,10 +168,11 @@ _alpha_  angle of magnetic moment with line of sight in degrees\n\n\
        s2->-s2, s3->-s3, o2->-o2, o3->-o3, the rest are the same */
     
     /*     do the upper two quadrants */
+
     for (j=0;j<angfactor*nstep;j++) {
       beta=(j+0.5)*step;
       integrate_path(omega0,mass,radius0,b,alpha,beta,s,0);
-      printf("%8.5g %8.6f",b,beta);
+      printf("%8.5e %8.6f",b,beta);
       for (i=S1;i<=S3;i++) {
 	printf(" %8.5f",s[i]);
       }
@@ -192,7 +196,9 @@ _alpha_  angle of magnetic moment with line of sight in degrees\n\n\
 	res[2]=exp(res[2]);
 	res[3]=exp(res[3]);
       }
-      printf(" %10.4e %10.4e %10.4e %10.4e\n",res[2],res[3],qtot,s[OMDL]);
+      double deltanu=phix(mass/radius0,b/radius0*sqrt(1-2*mass/radius0));
+      double cosLong=(alpha==0 ? cos(beta) : (cos(deltanu)-cos(alpha)*rdotm_newtonian)/(sin(alpha)*sqrt(1-rdotm_newtonian*rdotm_newtonian)));
+      printf(" %10.4e %10.4e %11.4e %10.4e %10.4f %10.4f\n",res[2],res[3],qtot,s[OMDL],deltanu*180/PI,(beta>PI ? -1 : 1)*acos(cosLong)*180/PI);
       
     }
   }
