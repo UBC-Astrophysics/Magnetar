@@ -2,12 +2,12 @@ using DelimitedFiles, FLoops, AdaptiveMCMC
 
 
 function maxlikerotation2_floop(param::Array{Float64}, data::Matrix{Float64})
-    if param[2]<0 || param[2]>180 || param[3]>90 || param[3]<0 || param[4]<-90 || param[4]>90 || param[5]<0 || param[5]>1        
+    if param[1]<0 || param[1]>1 || param[2]<0 || param[2]>180 || param[3]>90 || param[3]<0 || param[4]<-90 || param[4]>90 || param[5]<0 || param[5]>1        
         return -Inf
     end
     l=size(data)[2]
     radang=param[4]/180*pi
-    polfrac=tanh(param[1])
+    polfrac=param[1]
     halfamb=(param[2]-param[3])/2/180*pi
     halfapb=(param[2]+param[3])/2/180*pi
     shalfamb=sin(halfamb)
