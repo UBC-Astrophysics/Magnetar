@@ -21,6 +21,7 @@ function maxlikerotation2_floop(param::Array{Float64}, data::Matrix{Float64})
         twoang=2*((halfApB-halfAmB)+radang)
         qloc=cos(twoang)
         uloc=sin(twoang)
+        # 0.5 follows the IXPE convention 
         @inbounds @reduce ( c+=log(1+0.5*polfrac*(qloc*data[2,i]+uloc*data[3,i])) )
     end 
     return c
