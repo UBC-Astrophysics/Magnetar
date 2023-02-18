@@ -8,7 +8,10 @@ using FLoops
      4 posang         - position angle of rotation axis
      5 phid           - longitude of dipole axis (0 to 1)
 
-    data: matrix containing phase, evtlist['Q']*modf, evtlist['U']*modf
+    data: matrix containing phase, evtlist['Q']*modf, evtlist['U']*modf 
+
+    evtlist['Q']=cos(2*PA), evtlist['U']=sin(2*PA)
+ 
 =#
 
 function MaxLike_RVM(param::Array{Float64}, data::Matrix{Float64})
