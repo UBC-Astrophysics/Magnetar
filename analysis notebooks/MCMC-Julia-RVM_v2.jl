@@ -24,7 +24,7 @@ Sp=nothing
 Rp=nothing
 for i in 1:nstep
     out4 = adaptive_rwm(p0, 
-                    x->MaxLike_RVM(x,foro), 
+                    x->MaxLike_RVM_uniform(x,foro), 
                     niter; b=0, algorithm=:am, Sp=Sp, Rp=Rp)
 
     allout=out4.X
@@ -34,8 +34,8 @@ for i in 1:nstep
     allout=out4.X[:,2:end]
     global p0=allout[:,end]
     print(i*niter,":",p0,"\n")
-    print(Sp)
-    print(Rp)
+    print(Sp,"\n")
+    print(Rp,"\n")
     open("minimum2M_RVM_v2.txt", "a") do io
            writedlm(io, transpose(allout))
     end
